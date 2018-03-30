@@ -11,11 +11,13 @@ export class Post extends React.Component {
     };
   }
 
-  handleCommentsSubmission(event) {
+  handleCommentSubmission(event) {
+    //prevents from refresh, stays in same spot
     event.preventDefault();
+    // takes the value of input
     const text = event.target[0].value;
 
-    // create a comment
+    // create/posts a comment
     const comment =  {
       owner: 'sweetnamese',
       text: text,
@@ -51,6 +53,7 @@ export class Post extends React.Component {
           { this.props.comments.map(comment => <Comment owner={comment.owner} text={comment.text} />) }
           <hr className="post__body-separator" />
           <input placeholder="Add a comment..." className="post__comment-input"/>
+          <button onClick={ (event) => this.handleCommentSubmission(event) }>Comment</button>
         </div>
       </div>
   }
